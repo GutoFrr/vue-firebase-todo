@@ -1,30 +1,48 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
+import { db } from './firebase'
+import { collection, getDocs } from '@firebase/firestore'
 
 // todos
 const todos = ref([
-  {
-    id: 1,
-    content: 'Complete this Todo',
-    done: false,
-  },
-  {
-    id: 2,
-    content: 'Learn Vuex',
-    done: false,
-  },
-  {
-    id: 3,
-    content: 'Learn Vue Router',
-    done: false,
-  },
-  {
-    id: 4,
-    content: 'Learn Vue',
-    done: true,
-  },
+  // {
+  //   id: 1,
+  //   content: 'Complete this Todo',
+  //   done: false,
+  // },
+  // {
+  //   id: 2,
+  //   content: 'Learn Vuex',
+  //   done: false,
+  // },
+  // {
+  //   id: 3,
+  //   content: 'Learn Vue Router',
+  //   done: false,
+  // },
+  // {
+  //   id: 4,
+  //   content: 'Learn Vue',
+  //   done: true,
+  // },
 ])
+
+// get todods
+onMounted(async () => {
+  const querySnapshot = await getDocs(collection(db, 'todos'))
+  let fbTodos = []
+  querySnapshot.forEach((doc) => {
+    console.log(doc.id, ' => ', doc.data())
+    const todo = {
+      id: doc.id,
+      content: doc.data().content,
+      done: doc.data().done,
+    }
+    fbTodos.push(todo)
+  })
+  todos.value = fbTodos
+})
 
 // new todo
 const newTodoContent = ref('')
@@ -77,7 +95,7 @@ const toggleDone = (id) => {
   <!-- todo list -->
   <div class="card" v-for="todo in todos">
     <div class="todo-item">
-      <h4 :class="{ strike: todo.done }">{{ todo.content }}</h4>
+      <h4 :class="{ strike: todo.done }" class="todo-name">{{ todo.content }}</h4>
       <div class="todo-btns">
         <button
           type="button"
@@ -123,7 +141,7 @@ const toggleDone = (id) => {
   width: 300px;
   padding: 10px;
   border-radius: 5px;
-  border: 2px solid var(--primary);
+  border: 2px solid var(--secundary);
   outline: none;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.25);
   transition: all 0.3s;
@@ -175,8 +193,13 @@ const toggleDone = (id) => {
   box-shadow: 0 2px 8px 1px rgba(0, 0, 0, 0.25);
 }
 
+.todo-name {
+  font-weight: 400;
+}
+
 .todo-item .strike {
   text-decoration: line-through;
+  color: var(--primary);
 }
 
 .todo-btns {

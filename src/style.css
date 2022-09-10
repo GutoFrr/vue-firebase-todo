@@ -1,5 +1,6 @@
 :root {
   --primary: #41b883;
+  --secundary: #ecf8f3;
   --danger: #df4759;
 }
 
@@ -14,5 +15,5 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ecf8f3;
+  background-color: var(--secundary);
 }
