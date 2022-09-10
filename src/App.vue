@@ -15,12 +15,12 @@ const todos = ref([
     done: false,
   },
   {
-    id: 2,
+    id: 3,
     content: 'Learn Vue Router',
     done: false,
   },
   {
-    id: 2,
+    id: 4,
     content: 'Learn Vue',
     done: true,
   },
