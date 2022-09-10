@@ -13,6 +13,7 @@ const addTodo = () => {
     done: false,
   }
   todos.value.unshift(newTodo)
+  newTodoContent.value = ''
 }
 </script>
 
@@ -38,7 +39,7 @@ const addTodo = () => {
   <!-- todo list -->
   <div class="card" v-for="todo in todos">
     <div class="todo-item">
-      <h4>{{ newTodoContent }}</h4>
+      <h4>{{ todo.content }}</h4>
       <div class="todo-btns">
         <button type="button" class="todo-btn check-btn">&check;</button>
         <button type="button" class="todo-btn delete-btn">&cross;</button>
