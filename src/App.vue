@@ -35,6 +35,14 @@ const deleteTodo = (id) => {
     return todo.id !== id
   })
 }
+
+// complete todo
+const toggleDone = (id) => {
+  const index = todos.value.findIndex((todo) => {
+    return todo.id === id
+  })
+  todos.value[index].done = !todos.value[index].done
+}
 </script>
 
 <template>
@@ -59,9 +67,15 @@ const deleteTodo = (id) => {
   <!-- todo list -->
   <div class="card" v-for="todo in todos">
     <div class="todo-item">
-      <h4>{{ todo.content }}</h4>
+      <h4 :class="{ strike: todo.done }">{{ todo.content }}</h4>
       <div class="todo-btns">
-        <button type="button" class="todo-btn check-btn">&check;</button>
+        <button
+          type="button"
+          class="todo-btn check-btn"
+          @click="toggleDone(todo.id)"
+        >
+          &check;
+        </button>
         <button
           type="button"
           class="todo-btn delete-btn"
@@ -149,6 +163,10 @@ const deleteTodo = (id) => {
 
 .todo-item:hover {
   box-shadow: 0 2px 8px 1px rgba(0, 0, 0, 0.25);
+}
+
+.todo-item .strike {
+  text-decoration: line-through;
 }
 
 .todo-btns {
