@@ -1,8 +1,12 @@
-<script setup></script>
+<script setup>
+defineProps({
+  todo: String,
+})
+</script>
 
 <template>
   <div class="todo-item">
-    <h4>Do the dishes</h4>
+    <h4>{{ todo }}</h4>
     <div class="todo-btns">
       <button type="button" class="todo-btn check-btn">&check;</button>
       <button type="button" class="todo-btn delete-btn">&cross;</button>
@@ -15,7 +19,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 15px;
   background-color: #fff;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
