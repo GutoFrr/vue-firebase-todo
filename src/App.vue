@@ -2,8 +2,21 @@
 import { ref } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
 
-const todos = ref([])
+// todos
+const todos = ref([
+  {
+    id: 1,
+    content: 'Do the dishes',
+    done: false,
+  },
+  {
+    id: 2,
+    content: 'Go to shower',
+    done: false,
+  },
+])
 
+// new todo
 const newTodoContent = ref('')
 
 const addTodo = () => {
@@ -14,6 +27,13 @@ const addTodo = () => {
   }
   todos.value.unshift(newTodo)
   newTodoContent.value = ''
+}
+
+// delete todo
+const deleteTodo = (id) => {
+  todos.value = todos.value.filter((todo) => {
+    return todo.id !== id
+  })
 }
 </script>
 
@@ -42,7 +62,13 @@ const addTodo = () => {
       <h4>{{ todo.content }}</h4>
       <div class="todo-btns">
         <button type="button" class="todo-btn check-btn">&check;</button>
-        <button type="button" class="todo-btn delete-btn">&cross;</button>
+        <button
+          type="button"
+          class="todo-btn delete-btn"
+          @click="deleteTodo(todo.id)"
+        >
+          &cross;
+        </button>
       </div>
     </div>
   </div>
