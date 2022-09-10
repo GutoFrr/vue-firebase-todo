@@ -6,13 +6,23 @@ import { v4 as uuidv4 } from 'uuid'
 const todos = ref([
   {
     id: 1,
-    content: 'Do the dishes',
+    content: 'Complete this Todo',
     done: false,
   },
   {
     id: 2,
-    content: 'Go to shower',
+    content: 'Learn Vuex',
     done: false,
+  },
+  {
+    id: 2,
+    content: 'Learn Vue Router',
+    done: false,
+  },
+  {
+    id: 2,
+    content: 'Learn Vue',
+    done: true,
   },
 ])
 
