@@ -8,16 +8,19 @@ import {
   addDoc,
   deleteDoc,
   updateDoc,
+  query,
+  orderBy,
 } from '@firebase/firestore'
 
 // todos
 const todos = ref([])
 
 const todosCollection = collection(db, 'todos')
+const todosQuery = query(todosCollection, orderBy('date', 'desc'))
 
 // get todos
 onMounted(() => {
-  onSnapshot(todosCollection, (querySnapshot) => {
+  onSnapshot(todosQuery, (querySnapshot) => {
     const fbTodos = []
     querySnapshot.forEach((doc) => {
       const todo = {
@@ -38,6 +41,7 @@ const addTodo = () => {
   addDoc(todosCollection, {
     content: newTodoContent.value,
     done: false,
+    date: Date.now(),
   })
   newTodoContent.value = ''
 }
