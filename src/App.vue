@@ -1,5 +1,6 @@
 <script setup>
 import AddTodo from './components/AddTodo.vue'
+import TodoList from './components/TodoList.vue'
 </script>
 
 <template>
@@ -8,6 +9,7 @@ import AddTodo from './components/AddTodo.vue'
     <img src="./assets/firebase.svg" class="logo firebase-logo" />
   </div>
   <AddTodo />
+  <TodoList />
 </template>
 
 <style scoped>
