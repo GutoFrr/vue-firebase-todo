@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { db } from './firebase'
-import { collection, onSnapshot, addDoc } from '@firebase/firestore'
+import { collection, onSnapshot, addDoc, deleteDoc, doc } from '@firebase/firestore'
 
 // todos
 const todos = ref([])
@@ -37,9 +37,7 @@ const addTodo = () => {
 
 // delete todo
 const deleteTodo = (id) => {
-  todos.value = todos.value.filter((todo) => {
-    return todo.id !== id
-  })
+  deleteDoc(doc(todosCollection, id))
 }
 
 // complete todo
