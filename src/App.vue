@@ -1,36 +1,16 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import { v4 as uuidv4 } from 'uuid'
 import { db } from './firebase'
-import { collection, onSnapshot } from '@firebase/firestore'
+import { collection, onSnapshot, addDoc } from '@firebase/firestore'
 
 // todos
-const todos = ref([
-  // {
-  //   id: 1,
-  //   content: 'Complete this Todo',
-  //   done: false,
-  // },
-  // {
-  //   id: 2,
-  //   content: 'Learn Vuex',
-  //   done: false,
-  // },
-  // {
-  //   id: 3,
-  //   content: 'Learn Vue Router',
-  //   done: false,
-  // },
-  // {
-  //   id: 4,
-  //   content: 'Learn Vue',
-  //   done: true,
-  // },
-])
+const todos = ref([])
 
-// get todods
+const todosCollection = collection(db, 'todos')
+
+// get todos
 onMounted(() => {
-  onSnapshot(collection(db, 'todos'), (querySnapshot) => {
+  onSnapshot(todosCollection, (querySnapshot) => {
     const fbTodos = []
     querySnapshot.forEach((doc) => {
       const todo = {
@@ -48,12 +28,10 @@ onMounted(() => {
 const newTodoContent = ref('')
 
 const addTodo = () => {
-  const newTodo = {
-    id: uuidv4(),
+  addDoc(todosCollection, {
     content: newTodoContent.value,
     done: false,
-  }
-  todos.value.unshift(newTodo)
+  })
   newTodoContent.value = ''
 }
 
