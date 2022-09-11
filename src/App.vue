@@ -172,6 +172,7 @@ const toggleDone = (id) => {
   flex-direction: column;
   justify-content: center;
   margin-block: 10px;
+  max-width: 395px;
 }
 
 .todo-item {
@@ -191,6 +192,8 @@ const toggleDone = (id) => {
 
 .todo-name {
   font-weight: 400;
+  width: 255px;
+  overflow: hidden;
 }
 
 .todo-item .strike {
