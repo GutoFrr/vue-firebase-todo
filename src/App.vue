@@ -28,8 +28,12 @@ const handleLogOut = () => {
   <nav class="flex items-center justify-between w-96 gap-2 mx-auto py-4">
     <RouterLink to="/" class="nav-link"> Home </RouterLink>
     <RouterLink to="/todos" class="nav-link"> Todos </RouterLink>
-    <RouterLink to="/login" class="nav-link" v-if="!isLoggedIn"> LogIn </RouterLink>
-    <RouterLink to="/register" class="nav-link" v-if="!isLoggedIn"> Register </RouterLink>
+    <RouterLink to="/login" class="nav-link" v-if="!isLoggedIn">
+      LogIn
+    </RouterLink>
+    <RouterLink to="/register" class="nav-link" v-if="!isLoggedIn">
+      Register
+    </RouterLink>
     <button
       @click="handleLogOut"
       v-if="isLoggedIn"
