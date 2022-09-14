@@ -50,12 +50,11 @@ const toggleDone = (id) => {
 </script>
 
 <template>
-  <div
-    class="flex flex-col justify-between items-center mx-auto"
-    v-for="todo in todos"
-  >
+  <!-- Todo List -->
+  <div class="flex flex-col items-center mx-auto" v-for="todo in todos">
+    <!-- Todo Item -->
     <div
-      class="flex justify-between items-center w-96 p-3.5 bg-white rounded transition duration-300 shadow-lg hover:shadow-xl"
+      class="w-96 flex justify-between items-center mb-2.5 p-3.5 bg-white rounded transition duration-300 shadow-lg hover:shadow-xl"
     >
       <h4
         :class="{ 'text-vue-green line-through': todo.done }"
@@ -63,7 +62,7 @@ const toggleDone = (id) => {
       >
         {{ todo.content }}
       </h4>
-      <div class="todo-btns flex items-center gap-2.5">
+      <div class="flex items-center gap-2.5">
         <button
           type="button"
           class="todo-btn bg-vue-green"

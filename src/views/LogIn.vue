@@ -46,7 +46,9 @@ const login = () => {
       v-model="password"
       class="input"
     />
-    <p v-if="errorMsg" class="text-md font-medium text-red-500 self-start">{{ errorMsg }}</p>
+    <p v-if="errorMsg" class="text-md font-medium text-red-500 self-start">
+      {{ errorMsg }}
+    </p>
     <button
       @click="login"
       class="w-96 p-1 rounded shadow-md bg-vue-green text-white font-medium transition duration-300 hover:brightness-90"
