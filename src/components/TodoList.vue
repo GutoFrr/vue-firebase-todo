@@ -50,22 +50,30 @@ const toggleDone = (id) => {
 </script>
 
 <template>
-  <div class="card" v-for="todo in todos">
-    <div class="todo-item">
-      <h4 :class="{ strike: todo.done }" class="todo-name">
+  <div
+    class="flex flex-col justify-between items-center mx-auto"
+    v-for="todo in todos"
+  >
+    <div
+      class="flex justify-between items-center w-96 p-3.5 bg-white rounded transition duration-300 shadow-lg hover:shadow-xl"
+    >
+      <h4
+        :class="{ 'text-vue-green line-through': todo.done }"
+        class="w-64 font-normal overflow-hidden"
+      >
         {{ todo.content }}
       </h4>
-      <div class="todo-btns">
+      <div class="todo-btns flex items-center gap-2.5">
         <button
           type="button"
-          class="todo-btn check-btn"
+          class="todo-btn bg-vue-green"
           @click="toggleDone(todo.id)"
         >
           &check;
         </button>
         <button
           type="button"
-          class="todo-btn delete-btn"
+          class="todo-btn bg-red-600"
           @click="deleteTodo(todo.id)"
         >
           &cross;
@@ -75,67 +83,4 @@ const toggleDone = (id) => {
   </div>
 </template>
 
-<style scoped>
-.card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-block: 10px;
-  max-width: 395px;
-}
-
-.todo-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
-  background-color: #fff;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
-  transition: all 0.3s;
-}
-
-.todo-item:hover {
-  box-shadow: 0 2px 8px 1px rgba(0, 0, 0, 0.25);
-}
-
-.todo-name {
-  font-weight: 400;
-  width: 255px;
-  overflow: hidden;
-}
-
-.todo-item .strike {
-  text-decoration: line-through;
-  color: var(--primary);
-}
-
-.todo-btns {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.todo-btn {
-  width: 40px;
-  height: 35px;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.todo-btn:hover {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
-  filter: brightness(0.9);
-}
-
-.check-btn {
-  background-color: var(--primary);
-}
-
-.delete-btn {
-  background-color: var(--danger);
-}
-</style>
+<style scoped></style>

@@ -1,19 +1,17 @@
-:root {
-  --primary: #41b883;
-  --secundary: #ecf8f3;
-  --danger: #df4759;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
-  font-family: 'Roboto';
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--secundary);
+  @apply bg-primary-background;
+}
+
+@layer components {
+  .todo-btn {
+    @apply w-10 h-9 text-white rounded cursor-pointer transition duration-300 hover:shadow-lg hover:brightness-90;
+  }
+
+  .input {
+    @apply w-96 p-2 rounded shadow-lg outline-none transition duration-300 focus:shadow-xl
+  }
 }
