@@ -11,6 +11,7 @@ onMounted(() => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       isLoggedIn.value = true
+      router.push('/todos')
     } else {
       isLoggedIn.value = false
     }
