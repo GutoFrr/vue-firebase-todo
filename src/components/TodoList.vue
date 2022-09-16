@@ -9,12 +9,16 @@ import {
   query,
   orderBy,
 } from '@firebase/firestore'
+import { getAuth } from '@firebase/auth'
 import { db } from '../firebase'
 
-const todos = ref([])
+const auth = getAuth()
+const user = auth.currentUser
 
 const todosCollection = collection(db, 'todos')
 const todosQuery = query(todosCollection, orderBy('date', 'desc'))
+
+const todos = ref([])
 
 // get todos
 onMounted(() => {
@@ -25,6 +29,7 @@ onMounted(() => {
         id: doc.id,
         content: doc.data().content,
         done: doc.data().done,
+        user: doc.data().user,
       }
       fbTodos.push(todo)
     })

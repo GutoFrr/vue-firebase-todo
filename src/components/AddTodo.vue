@@ -14,15 +14,12 @@ const user = auth.currentUser
 
 const addTodo = () => {
   if (user) {
-    isLoggedIn.value = true
     addDoc(todosCollection, {
       user: user.uid,
       content: newTodoContent.value,
       done: false,
       date: Date.now(),
     })
-  } else {
-    isLoggedIn.value = false
   }
   newTodoContent.value = ''
 }
