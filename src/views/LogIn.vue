@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import { useRouter } from 'vue-router'
+import Navbar from '../components/Navbar.vue'
 
 const email = ref('')
 const password = ref('')
@@ -37,6 +38,7 @@ const login = () => {
 </script>
 
 <template>
+  <Navbar />
   <div class="w-96 flex flex-col items-center gap-3 mx-auto">
     <h1 class="text-3xl font-bold self-start">LogIn</h1>
     <input type="email" placeholder="Email" v-model="email" class="input" />
