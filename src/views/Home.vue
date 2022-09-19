@@ -32,7 +32,7 @@ if (isLoggedIn === true) {
       <h1 class="text-2xl sm:text-4xl text-center md:text-left font-bold px-12 sm:px-0">
         <span class="text-vueGreen">Vue</span> +
         <span class="text-firebase">Firebase</span> +
-        <span class="text-tailwind">Tailwind</span> Todo List
+        <span class="text-tailwind">Tailwind</span> Todo List.
         <br />
         Start writing your todos now!
       </h1>
