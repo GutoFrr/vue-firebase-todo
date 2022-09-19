@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-primary-background;
+  @apply bg-primaryBackground;
   font-family: 'Roboto';
 }
 
@@ -13,6 +13,6 @@ body {
   }
 
   .input {
-    @apply w-96 p-2 rounded shadow-lg outline-none transition duration-300 focus:shadow-xl
+    @apply w-96 p-2 rounded shadow-lg outline-none transition duration-300 focus:shadow-xl;
   }
 }

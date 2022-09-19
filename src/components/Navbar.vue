@@ -38,7 +38,7 @@ const handleLogOut = () => {
     <button
       @click="handleLogOut"
       v-if="isLoggedIn"
-      class="w-24 p-1.5 bg-vue-green text-white rounded shadow-md cursor-pointer transition duration-300 hover:shadow-lg hover:brightness-90"
+      class="w-24 p-1.5 bg-vueGreen text-white rounded shadow-md cursor-pointer transition duration-300 hover:shadow-lg hover:brightness-90"
     >
       LogOut
     </button>
@@ -47,10 +47,10 @@ const handleLogOut = () => {
 
 <style scoped>
 .nav-link {
-  @apply grid place-items-center w-24 p-1.5 font-medium antialiased transition duration-300 hover:text-vue-green;
+  @apply grid place-items-center w-24 p-1.5 font-medium antialiased transition duration-300 hover:text-vueGreen;
 }
 
 .active-route {
-  @apply text-vue-green bg-white rounded shadow-md transition duration-300 hover:shadow-lg;
+  @apply text-vueGreen bg-white rounded shadow-md transition duration-300 hover:shadow-lg;
 }
 </style>

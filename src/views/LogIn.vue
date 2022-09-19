@@ -53,7 +53,7 @@ const login = () => {
     </p>
     <button
       @click="login"
-      class="w-96 p-1 rounded shadow-md bg-vue-green text-white font-medium transition duration-300 hover:brightness-90"
+      class="w-96 p-1 rounded shadow-md bg-vueGreen text-white font-medium transition duration-300 hover:brightness-90"
     >
       LogIn
     </button>

@@ -62,7 +62,7 @@ const toggleDone = (id) => {
       class="w-96 flex justify-between items-center mb-2.5 p-3.5 bg-white rounded transition duration-300 shadow-lg hover:shadow-xl"
     >
       <h4
-        :class="{ 'text-vue-green line-through': todo.done }"
+        :class="{ 'text-vueGreen line-through': todo.done }"
         class="w-64 font-normal overflow-hidden"
       >
         {{ todo.content }}
@@ -70,7 +70,7 @@ const toggleDone = (id) => {
       <div class="flex items-center gap-2.5">
         <button
           type="button"
-          class="todo-btn bg-vue-green"
+          class="todo-btn bg-vueGreen"
           @click="toggleDone(todo.id)"
         >
           &check;

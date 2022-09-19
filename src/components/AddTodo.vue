@@ -35,7 +35,7 @@ const addTodo = () => {
         class="input w-72"
       />
       <button
-        class="w-20 p-2 bg-vue-green text-white rounded shadow-lg cursor-pointer transition duration-300 hover:shadow-xl hover:brightness-90"
+        class="w-20 p-2 bg-vueGreen text-white rounded shadow-lg cursor-pointer transition duration-300 hover:shadow-xl hover:brightness-90"
         :disabled="!newTodoContent"
       >
         Add

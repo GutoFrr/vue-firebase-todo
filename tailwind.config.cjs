@@ -4,8 +4,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'vue-green': '#41b883',
-        'primary-background': '#ecf8f3',
+        vueGreen: '#41b883',
+        primaryBackground: '#ecf8f3',
+        firebase: '#fcca3f',
+        tailwind: '#07b6d5'
       },
     },
   },
