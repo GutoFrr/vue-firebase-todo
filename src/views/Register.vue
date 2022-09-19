@@ -42,6 +42,12 @@ const register = async () => {
     >
       Register
     </button>
+    <h2>
+      Already have an account?
+      <RouterLink to="/login" class="text-vueGreen hover:underline">
+        Login now!
+      </RouterLink>
+    </h2>
   </div>
 </template>
 

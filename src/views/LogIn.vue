@@ -57,6 +57,12 @@ const login = () => {
     >
       LogIn
     </button>
+    <h2>
+      Don't have an account?
+      <RouterLink to="/register" class="text-vueGreen hover:underline">
+        Register now!
+      </RouterLink>
+    </h2>
   </div>
 </template>
 
