@@ -1,24 +1,23 @@
 <script setup>
 import { ref } from 'vue'
-import { addDoc, collection } from '@firebase/firestore'
+import { addDoc, collection, serverTimestamp } from '@firebase/firestore'
 import { getAuth } from 'firebase/auth'
 import { db } from '../firebase'
 
-const todosCollection = collection(db, 'todos')
-
 const newTodoContent = ref('')
 
-const isLoggedIn = ref(false)
 const auth = getAuth()
 const user = auth.currentUser
+
+const todosCollection = collection(db, 'todos')
 
 const addTodo = () => {
   if (user) {
     addDoc(todosCollection, {
-      user: user.uid,
+      author: user.uid,
       content: newTodoContent.value,
       done: false,
-      date: Date.now(),
+      createdAt: serverTimestamp(),
     })
   }
   newTodoContent.value = ''

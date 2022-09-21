@@ -7,34 +7,45 @@ import {
   deleteDoc,
   updateDoc,
   query,
+  where,
   orderBy,
 } from '@firebase/firestore'
 import { getAuth } from '@firebase/auth'
 import { db } from '../firebase'
 
-const auth = getAuth()
-const user = auth.currentUser
+const todos = ref([])
+
+const auth = getAuth().currentUser
+const user = auth.uid
 
 const todosCollection = collection(db, 'todos')
-const todosQuery = query(todosCollection, orderBy('date', 'desc'))
-
-const todos = ref([])
+const todosQuery = query(
+  todosCollection,
+  where('author', '==', user),
+  orderBy('createdAt', 'desc')
+)
 
 // get todos
 onMounted(() => {
-  onSnapshot(todosQuery, (querySnapshot) => {
-    const fbTodos = []
-    querySnapshot.forEach((doc) => {
-      const todo = {
-        id: doc.id,
-        content: doc.data().content,
-        done: doc.data().done,
-        user: doc.data().user,
-      }
-      fbTodos.push(todo)
-    })
-    todos.value = fbTodos
-  })
+  onSnapshot(
+    todosQuery,
+    (querySnapshot) => {
+      const fbTodos = []
+      querySnapshot.forEach((doc) => {
+        const todo = {
+          id: doc.id,
+          content: doc.data().content,
+          done: doc.data().done,
+          user: doc.data().user,
+        }
+        fbTodos.push(todo)
+      })
+      todos.value = fbTodos
+    },
+    (error) => {
+      console.log(error)
+    }
+  )
 })
 
 // delete todo

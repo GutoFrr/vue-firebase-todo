@@ -1,5 +1,5 @@
-import { initializeApp } from 'firebase/app'
-import { getFirestore } from 'firebase/firestore'
+import { initializeApp } from '@firebase/app'
+import { getFirestore } from '@firebase/firestore'
 const apiKey = import.meta.env.VITE_API_KEY
 const authDomain = import.meta.env.VITE_AUTH_DOMAIN
 const projectId = import.meta.env.VITE_PROJECT_ID
