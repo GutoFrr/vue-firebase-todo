@@ -6,33 +6,33 @@ import Navbar from '../components/Navbar.vue'
 
 const email = ref('')
 const password = ref('')
-const errorMsg = ref()
+const errorMsg = ref('')
 const router = useRouter()
 
-const login = () => {
+const login = async () => {
   const auth = getAuth()
-  signInWithEmailAndPassword(auth, email.value, password.value)
-    .then((data) => {
-      console.log('Successfully signed!')
-      router.push('/todos')
-    })
-    .catch((error) => {
-      console.log(error.code)
-      switch (error.code) {
-        case 'auth/invalid-email':
-          errorMsg.value = 'Invalid email'
-          break
-        case 'auth/user-not-found':
-          errorMsg.value = 'No account with that email was found'
-          break
-        case 'auth/wrong-password':
-          errorMsg.value = 'Incorrect password'
-          break
-        default:
-          errorMsg.value = 'Email or password was incorrect'
-          break
-      }
-    })
+
+  try {
+    await signInWithEmailAndPassword(auth, email.value, password.value)
+    console.log('Successfully signed!')
+    router.push('/todos')
+  } catch (error) {
+    console.log(error.code)
+    switch (error.code) {
+      case 'auth/invalid-email':
+        errorMsg.value = 'Invalid email'
+        break
+      case 'auth/user-not-found':
+        errorMsg.value = 'No account with that email was found'
+        break
+      case 'auth/wrong-password':
+        errorMsg.value = 'Incorrect password'
+        break
+      default:
+        errorMsg.value = 'Email or password was incorrect'
+        break
+    }
+  }
 }
 // const signInWithGoogle = () => {}
 </script>

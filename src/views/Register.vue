@@ -6,19 +6,24 @@ import Navbar from '../components/Navbar.vue'
 
 const email = ref('')
 const password = ref('')
+const errorMsg = ref('')
 const router = useRouter()
 
 const register = async () => {
   const auth = getAuth()
-  createUserWithEmailAndPassword(auth, email.value, password.value)
-    .then((data) => {
-      console.log('Successfully registered')
-      router.push('/todos')
-    })
-    .catch((error) => {
-      console.log(error.code)
-      alert(error.message)
-    })
+
+  try {
+    await createUserWithEmailAndPassword(auth, email.value, password.value)
+    console.log('Successfully registered')
+    router.push('/todos')
+  } catch (error) {
+    console.log(error.code)
+    switch (error.code) {
+      case 'auth/invalid-email':
+        errorMsg.value = 'Invalid email'
+        break
+    }
+  }
 }
 </script>
 
