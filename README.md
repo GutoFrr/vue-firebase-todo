@@ -1,4 +1,4 @@
-# Vue + Firebase + Tailwind CSS
+# Vue.js + Firebase + Tailwind CSS
 
 ## Motivation
 I wanted to create a Todo List with Vue, Firebase and Tailwind to 
