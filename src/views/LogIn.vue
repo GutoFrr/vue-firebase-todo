@@ -41,12 +41,19 @@ const login = async () => {
   <Navbar />
   <div class="w-96 flex flex-col items-center gap-3 mx-auto">
     <h1 class="text-3xl font-bold self-start">LogIn</h1>
-    <input type="email" placeholder="Email" v-model="email" class="input" />
+    <input
+      type="email"
+      placeholder="Email"
+      v-model="email"
+      class="input"
+      required
+    />
     <input
       type="password"
       placeholder="Password"
       v-model="password"
       class="input"
+      required
     />
     <p v-if="errorMsg" class="text-md font-medium text-red-500 self-start">
       {{ errorMsg }}
